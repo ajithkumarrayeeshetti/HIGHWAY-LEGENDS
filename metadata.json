@@ -1,0 +1,6 @@
+{
+  "name": "Highway Legends",
+  "description": "Born to Drive. Built to Dominate. Premium AAA 3D browser racing game experience, garage showroom, and futuristic automotive design system.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

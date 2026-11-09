@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --bg-primary: #08090D;
+    --bg-secondary: #11141B;
+    --bg-card: #171B24;
+    --racing-red: #FF3434;
+    --racing-orange: #FF8A32;
+    --electric-blue: #27B9FF;
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A8B5;
+    --text-muted: #687080;
+    --status-success: #35D58A;
+    --status-warning: #FFB547;
+  }
+
+  body {
+    background-color: #08090D;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+}
+
+.font-racing {
+  font-family: 'Barlow Condensed', 'Orbitron', -apple-system, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.font-speed {
+  font-family: 'Orbitron', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.font-mono-nums {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Racing Glass Panel */
+.racing-panel {
+  background: rgba(23, 27, 36, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+.racing-panel-glow {
+  background: linear-gradient(135deg, rgba(23, 27, 36, 0.95), rgba(17, 20, 27, 0.95));
+  border: 1px solid rgba(255, 52, 52, 0.25);
+  box-shadow: 0 0 24px -4px rgba(255, 52, 52, 0.2);
+}
+
+/* Subtle carbon texture pattern */
+.bg-carbon {
+  background-color: #0d0f14;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 8px 8px;
+}
+
+/* Angular racing cuts */
+.clip-racing-corner {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.clip-racing-skew {
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+
+/* Racing Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px -2px rgba(255, 52, 52, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 35px 2px rgba(255, 52, 52, 0.6);
+  }
+}
+
+.animate-pulseGlow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* Custom Scrollbar for gaming UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #08090D;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2430;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF3434;
+}
