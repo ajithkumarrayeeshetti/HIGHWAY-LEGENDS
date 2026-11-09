@@ -285,13 +285,13 @@ export const Screen05Garage: React.FC<Screen05GarageProps> = ({
                       sound.playSelect();
                       onSelectActiveCar(viewedVehicle.id);
                     }}
-                    className="flex items-center gap-2 px-5 py-2.5 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors shadow-lg shadow-red-600/30"
+                    className="h-10 flex items-center justify-center gap-2 px-5 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-600/30 cursor-pointer touch-manipulation active:scale-[0.98]"
                   >
                     <Check className="w-4 h-4" />
                     <span>Select Car</span>
                   </button>
                 ) : (
-                  <span className="px-4 py-2 bg-[#171B24] border border-[#35D58A]/40 text-[#35D58A] rounded text-xs font-racing font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="h-10 px-4 bg-[#171B24] border border-[#35D58A]/40 text-[#35D58A] rounded text-xs font-racing font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
                     <Check className="w-4 h-4" />
                     Selected
                   </span>
@@ -302,7 +302,7 @@ export const Screen05Garage: React.FC<Screen05GarageProps> = ({
                     sound.playClick();
                     onNavigate('customization');
                   }}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-[#171B24] hover:bg-[#202633] border border-white/15 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors"
+                  className="h-10 flex items-center justify-center gap-2 px-4 bg-[#171B24] hover:bg-[#202633] border border-white/15 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation active:scale-[0.98]"
                 >
                   <Wrench className="w-4 h-4 text-[#27B9FF]" />
                   <span>Customize & Paint</span>
@@ -313,7 +313,7 @@ export const Screen05Garage: React.FC<Screen05GarageProps> = ({
                     sound.playSelect();
                     onTestDrive(viewedVehicle);
                   }}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-[#171B24] hover:bg-[#202633] border border-white/15 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors"
+                  className="h-10 flex items-center justify-center gap-2 px-4 bg-[#171B24] hover:bg-[#202633] border border-white/15 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation active:scale-[0.98]"
                 >
                   <Play className="w-4 h-4 text-[#35D58A]" />
                   <span>Test Drive</span>
@@ -326,9 +326,9 @@ export const Screen05Garage: React.FC<Screen05GarageProps> = ({
                   onBuyVehicle(viewedVehicle.id);
                 }}
                 disabled={player.coins < viewedVehicle.price}
-                className={`flex items-center gap-2 px-6 py-2.5 rounded text-xs font-racing font-bold uppercase tracking-wider transition-all ${
+                className={`h-10 flex items-center justify-center gap-2 px-6 rounded text-xs font-racing font-bold uppercase tracking-wider transition-all ${
                   player.coins >= viewedVehicle.price
-                    ? 'bg-[#FF8A32] hover:bg-[#e67520] text-white shadow-lg shadow-orange-600/30 cursor-pointer'
+                    ? 'bg-[#FF8A32] hover:bg-[#e67520] text-white shadow-lg shadow-orange-600/30 cursor-pointer touch-manipulation active:scale-[0.98]'
                     : 'bg-[#171B24] text-slate-500 border border-white/5 cursor-not-allowed'
                 }`}
               >

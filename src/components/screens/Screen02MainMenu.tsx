@@ -64,7 +64,7 @@ export const Screen02MainMenu: React.FC<Screen02MainMenuProps> = ({
                 sound.playSelect();
                 onNavigate('race-select');
               }}
-              className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-[#FF3434] hover:bg-[#e02626] text-white font-racing font-black text-lg sm:text-xl uppercase tracking-wider clip-racing-skew shadow-xl shadow-red-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative h-14 flex items-center justify-center gap-3 px-8 bg-[#FF3434] hover:bg-[#e02626] text-white font-racing font-black text-lg sm:text-xl uppercase tracking-wider rounded shadow-xl shadow-red-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer touch-manipulation"
             >
               <Play className="w-5 h-5 fill-white" />
               <span>Start Racing</span>
@@ -76,7 +76,7 @@ export const Screen02MainMenu: React.FC<Screen02MainMenuProps> = ({
                 sound.playSelect();
                 onNavigate('career');
               }}
-              className="flex items-center justify-center gap-2.5 px-6 py-4 bg-[#171B24] hover:bg-[#202633] text-white font-racing font-bold text-base sm:text-lg uppercase tracking-wider border border-white/15 rounded transition-all hover:border-[#FF3434]"
+              className="h-14 flex items-center justify-center gap-2.5 px-6 bg-[#171B24] hover:bg-[#202633] text-white font-racing font-bold text-base sm:text-lg uppercase tracking-wider border border-white/15 rounded transition-all hover:border-[#FF3434] cursor-pointer touch-manipulation active:scale-[0.98]"
             >
               <Trophy className="w-4 h-4 text-[#FFB547]" />
               <span>Continue Career</span>
@@ -87,7 +87,7 @@ export const Screen02MainMenu: React.FC<Screen02MainMenuProps> = ({
                 sound.playSelect();
                 onQuickRace();
               }}
-              className="flex items-center justify-center gap-2.5 px-5 py-4 bg-[#11141B]/90 hover:bg-[#1a1f2b] text-slate-300 hover:text-white font-racing font-bold text-base uppercase tracking-wider border border-white/10 rounded transition-all"
+              className="h-14 flex items-center justify-center gap-2.5 px-6 bg-[#11141B]/90 hover:bg-[#1a1f2b] text-slate-300 hover:text-white font-racing font-bold text-base uppercase tracking-wider border border-white/10 rounded transition-all cursor-pointer touch-manipulation active:scale-[0.98]"
             >
               <Zap className="w-4 h-4 text-[#27B9FF]" />
               <span>Quick Race</span>
@@ -95,7 +95,7 @@ export const Screen02MainMenu: React.FC<Screen02MainMenuProps> = ({
           </div>
 
           {/* Secondary Sub-Navigation Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 pt-4">
             {[
               { id: 'garage', label: 'Garage', icon: Wrench, color: 'text-[#27B9FF]' },
               { id: 'world-map', label: 'World Map', icon: Compass, color: 'text-[#35D58A]' },
@@ -112,10 +112,10 @@ export const Screen02MainMenu: React.FC<Screen02MainMenuProps> = ({
                     sound.playClick();
                     onNavigate(nav.id as GameScreen);
                   }}
-                  className="flex items-center gap-2 px-3.5 py-2.5 bg-[#171B24]/90 hover:bg-[#202633] border border-white/10 hover:border-white/20 rounded transition-all text-left group"
+                  className="h-11 flex items-center gap-2.5 px-3.5 bg-[#171B24]/90 hover:bg-[#202633] border border-white/10 hover:border-[#FF3434]/40 rounded transition-all text-left group cursor-pointer touch-manipulation active:scale-[0.98]"
                 >
                   <Icon className={`w-4 h-4 ${nav.color}`} />
-                  <span className="text-xs font-racing font-bold tracking-wide uppercase text-slate-200 group-hover:text-white">
+                  <span className="text-xs font-racing font-bold tracking-wide uppercase text-slate-200 group-hover:text-white truncate">
                     {nav.label}
                   </span>
                 </button>

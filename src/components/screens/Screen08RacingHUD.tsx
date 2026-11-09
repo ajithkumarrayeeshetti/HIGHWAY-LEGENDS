@@ -166,7 +166,14 @@ export const Screen08RacingHUD: React.FC<Screen08RacingHUDProps> = ({
       )}
 
       {/* TOP HUD BAR */}
-      <div className="absolute top-0 left-0 right-0 z-20 p-4 sm:p-6 flex items-start justify-between pointer-events-none">
+      <div
+        className="absolute top-0 left-0 right-0 z-20 p-4 sm:p-6 flex items-start justify-between pointer-events-none"
+        style={{
+          paddingTop: 'max(16px, env(safe-area-inset-top, 16px))',
+          paddingLeft: 'max(16px, env(safe-area-inset-left, 16px))',
+          paddingRight: 'max(16px, env(safe-area-inset-right, 16px))'
+        }}
+      >
         {/* Top-Left: Distance, Objective & Chassis Health */}
         <div className="pointer-events-auto space-y-2">
           <div className="flex items-center gap-3">
@@ -303,7 +310,7 @@ export const Screen08RacingHUD: React.FC<Screen08RacingHUDProps> = ({
           {/* Top Quick Actions Row: Camera Modes (Upside) & Pause */}
           <div className="flex items-center gap-2">
             {/* Camera Perspective Mode Switcher (All 3 Views Upside) */}
-            <div className="flex items-center p-0.5 rounded-lg bg-black/85 backdrop-blur-md border border-white/20 shadow-xl">
+            <div className="h-8 flex items-center p-0.5 rounded-lg bg-black/85 backdrop-blur-md border border-white/20 shadow-xl">
               {(['chase', 'hood', 'close'] as const).map((mode) => {
                 const isActive = cameraMode === mode;
                 const label = mode === 'chase' ? 'CHASE' : mode === 'hood' ? 'HOOD' : 'CLOSE';
@@ -314,7 +321,7 @@ export const Screen08RacingHUD: React.FC<Screen08RacingHUDProps> = ({
                       sound.playClick();
                       setCameraMode(mode);
                     }}
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-racing font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                    className={`h-full flex items-center justify-center gap-1 px-2.5 rounded text-[11px] font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation ${
                       isActive
                         ? 'bg-[#FF3434] text-white shadow-md shadow-red-600/30 font-black'
                         : 'text-slate-400 hover:text-white hover:bg-white/5'
@@ -334,7 +341,7 @@ export const Screen08RacingHUD: React.FC<Screen08RacingHUDProps> = ({
                 sound.playClick();
                 onPause();
               }}
-              className="p-1 px-2.5 rounded-lg bg-black/85 backdrop-blur-md border border-white/20 text-white hover:bg-[#FF3434] hover:border-[#FF3434] transition-all shadow-xl flex items-center gap-1.5"
+              className="h-8 px-3 rounded-lg bg-black/85 backdrop-blur-md border border-white/20 text-white hover:bg-[#FF3434] hover:border-[#FF3434] transition-all shadow-xl flex items-center justify-center gap-1.5 cursor-pointer touch-manipulation active:scale-95"
               title="Pause Race (Esc / P)"
             >
               <Pause className="w-3.5 h-3.5" />

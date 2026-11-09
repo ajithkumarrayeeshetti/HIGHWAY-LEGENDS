@@ -324,7 +324,7 @@ export const Screen06Customization: React.FC<Screen06CustomizationProps> = ({
           <div className="flex items-center gap-4 text-xs">
             <button
               onClick={handleReset}
-              className="flex items-center gap-1.5 px-3 py-2 bg-[#171B24] hover:bg-[#202633] text-slate-300 hover:text-white rounded border border-white/10 font-racing font-bold uppercase transition-colors"
+              className="h-10 flex items-center justify-center gap-2 px-4 bg-[#171B24] hover:bg-[#202633] text-slate-300 hover:text-white rounded border border-white/10 font-racing font-bold uppercase transition-all cursor-pointer touch-manipulation active:scale-[0.98]"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset Configuration</span>
@@ -341,13 +341,13 @@ export const Screen06Customization: React.FC<Screen06CustomizationProps> = ({
             )}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={() => {
                 sound.playClick();
                 onNavigate('garage');
               }}
-              className="px-4 py-2.5 bg-[#171B24] hover:bg-[#202633] border border-white/10 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors"
+              className="h-10 px-4 flex items-center justify-center bg-[#171B24] hover:bg-[#202633] border border-white/10 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation active:scale-[0.98]"
             >
               Back to Showroom
             </button>
@@ -355,9 +355,9 @@ export const Screen06Customization: React.FC<Screen06CustomizationProps> = ({
             <button
               onClick={handleApply}
               disabled={player.coins < totalPendingCost}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded text-xs font-racing font-bold uppercase tracking-wider transition-all ${
+              className={`h-10 flex items-center justify-center gap-2 px-6 rounded text-xs font-racing font-bold uppercase tracking-wider transition-all ${
                 player.coins >= totalPendingCost
-                  ? 'bg-[#FF3434] hover:bg-[#e02626] text-white shadow-lg shadow-red-600/30'
+                  ? 'bg-[#FF3434] hover:bg-[#e02626] text-white shadow-lg shadow-red-600/30 cursor-pointer touch-manipulation active:scale-[0.98]'
                   : 'bg-[#171B24] text-slate-500 cursor-not-allowed border border-white/5'
               }`}
             >

@@ -41,16 +41,23 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   const xpPercent = Math.min(100, Math.round((player.xp / player.nextLevelXp) * 100));
 
   return (
-    <header className="relative z-30 flex items-center justify-between gap-4 px-4 sm:px-8 py-3 bg-[#08090D]/90 backdrop-blur-md border-b border-white/10 select-none">
+    <header
+      className="relative z-30 h-[65px] flex items-center justify-between gap-4 px-4 sm:px-8 bg-[#08090D]/90 backdrop-blur-md border-b border-white/10 select-none"
+      style={{
+        paddingLeft: 'max(16px, env(safe-area-inset-left, 16px))',
+        paddingRight: 'max(16px, env(safe-area-inset-right, 16px))'
+      }}
+    >
       {/* Left: Back / Brand Wordmark */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 sm:gap-4">
         {showBack && currentScreen !== 'main-menu' && currentScreen !== 'intro' && (
           <button
             onClick={() => {
               sound.playClick();
               onNavigate('main-menu');
             }}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-300 hover:text-white bg-[#171B24] hover:bg-[#1f2533] border border-white/10 rounded transition-colors"
+            className="h-9 flex items-center justify-center gap-1.5 px-3 text-xs font-racing font-bold uppercase tracking-wider text-slate-300 hover:text-white bg-[#171B24] hover:bg-[#1f2533] border border-white/10 rounded transition-colors cursor-pointer touch-manipulation"
+            title="Return to Main Menu"
           >
             <ChevronLeft className="w-4 h-4 text-[#FF3434]" />
             <span className="hidden sm:inline">Main Menu</span>
@@ -125,7 +132,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
       </div>
 
       {/* Right: Quick Action Controls */}
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="flex items-center gap-2 sm:gap-2.5">
         {/* Quick Garage shortcut */}
         {currentScreen !== 'garage' && (
           <button
@@ -133,7 +140,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               sound.playSelect();
               onNavigate('garage');
             }}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold uppercase tracking-wider rounded bg-[#171B24] hover:bg-[#1f2533] text-slate-300 hover:text-white border border-white/10 transition-all"
+            className="h-9 hidden sm:flex items-center justify-center gap-1.5 px-3 text-xs font-racing font-bold uppercase tracking-wider rounded bg-[#171B24] hover:bg-[#1f2533] text-slate-300 hover:text-white border border-white/10 transition-all cursor-pointer touch-manipulation"
             title="Open Garage Showroom"
           >
             <Wrench className="w-3.5 h-3.5 text-[#27B9FF]" />
@@ -148,7 +155,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
               sound.playSelect();
               onNavigate('settings');
             }}
-            className="p-2 text-slate-300 hover:text-white bg-[#171B24] hover:bg-[#1f2533] border border-white/10 rounded transition-colors"
+            className="w-9 h-9 flex items-center justify-center text-slate-300 hover:text-white bg-[#171B24] hover:bg-[#1f2533] border border-white/10 rounded transition-colors cursor-pointer touch-manipulation"
             title="Audio & Graphics Settings"
           >
             <SettingsIcon className="w-4 h-4 text-slate-300" />
@@ -161,7 +168,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
             sound.playClick();
             onToggleMute();
           }}
-          className="p-2 text-slate-300 hover:text-white bg-[#171B24] hover:bg-[#1f2533] border border-white/10 rounded transition-colors"
+          className="w-9 h-9 flex items-center justify-center text-slate-300 hover:text-white bg-[#171B24] hover:bg-[#1f2533] border border-white/10 rounded transition-colors cursor-pointer touch-manipulation"
           title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
         >
           {isMuted ? <VolumeX className="w-4 h-4 text-[#FF3434]" /> : <Volume2 className="w-4 h-4 text-[#35D58A]" />}
@@ -170,7 +177,7 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
         {/* Fullscreen */}
         <button
           onClick={toggleFullscreen}
-          className="p-2 text-slate-300 hover:text-white bg-[#171B24] hover:bg-[#1f2533] border border-white/10 rounded transition-colors"
+          className="w-9 h-9 flex items-center justify-center text-slate-300 hover:text-white bg-[#171B24] hover:bg-[#1f2533] border border-white/10 rounded transition-colors cursor-pointer touch-manipulation"
           title="Fullscreen"
         >
           <Maximize2 className="w-4 h-4" />

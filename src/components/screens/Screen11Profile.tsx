@@ -66,11 +66,12 @@ export const Screen11Profile: React.FC<Screen11ProfileProps> = ({
                   maxLength={12}
                   value={callsignInput}
                   onChange={(e) => setCallsignInput(e.target.value)}
-                  className="px-2 py-1 bg-black/60 border border-[#FF3434] rounded text-lg font-racing font-black text-white uppercase focus:outline-none"
+                  className="px-2.5 py-1 bg-black/60 border border-[#FF3434] rounded text-lg font-racing font-black text-white uppercase focus:outline-none"
                 />
                 <button
                   onClick={handleSave}
-                  className="p-1.5 bg-[#FF3434] text-white rounded hover:bg-[#e02626]"
+                  className="w-8 h-8 flex items-center justify-center bg-[#FF3434] text-white rounded hover:bg-[#e02626] cursor-pointer touch-manipulation active:scale-95 transition-all"
+                  title="Save Callsign"
                 >
                   <Check className="w-4 h-4" />
                 </button>
@@ -82,7 +83,7 @@ export const Screen11Profile: React.FC<Screen11ProfileProps> = ({
                 </h1>
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="text-slate-400 hover:text-white transition-colors"
+                  className="w-8 h-8 flex items-center justify-center rounded bg-[#171B24] border border-white/10 text-slate-400 hover:text-white transition-all cursor-pointer touch-manipulation active:scale-95"
                   title="Edit Callsign"
                 >
                   <Edit2 className="w-3.5 h-3.5" />

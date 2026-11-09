@@ -94,7 +94,7 @@ export const Screen15Settings: React.FC<Screen15SettingsProps> = ({
                         sound.playClick();
                         setLocalSettings({ ...localSettings, graphicsQuality: q });
                       }}
-                      className={`py-2 text-xs font-racing font-bold uppercase rounded border transition-all ${
+                      className={`h-9 flex items-center justify-center text-xs font-racing font-bold uppercase rounded border transition-all cursor-pointer touch-manipulation active:scale-[0.98] ${
                         isSelected
                           ? 'bg-[#FF3434] border-[#FF3434] text-white shadow'
                           : 'bg-[#11141B] border-white/10 text-slate-400 hover:text-white'
@@ -119,7 +119,7 @@ export const Screen15Settings: React.FC<Screen15SettingsProps> = ({
                         sound.playClick();
                         setLocalSettings({ ...localSettings, cameraDistance: c });
                       }}
-                      className={`py-2 text-xs font-racing font-bold uppercase rounded border transition-all ${
+                      className={`h-9 flex items-center justify-center text-xs font-racing font-bold uppercase rounded border transition-all cursor-pointer touch-manipulation active:scale-[0.98] ${
                         isSelected
                           ? 'bg-[#27B9FF] border-[#27B9FF] text-black shadow font-black'
                           : 'bg-[#11141B] border-white/10 text-slate-400 hover:text-white'
@@ -279,13 +279,13 @@ export const Screen15Settings: React.FC<Screen15SettingsProps> = ({
                       onResetProgress();
                       setShowResetConfirm(false);
                     }}
-                    className="flex-1 py-2 bg-red-600 hover:bg-red-700 text-white rounded text-xs font-racing font-bold uppercase tracking-wider"
+                    className="h-10 flex-1 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded text-xs font-racing font-bold uppercase tracking-wider cursor-pointer touch-manipulation active:scale-[0.98]"
                   >
                     Confirm Reset
                   </button>
                   <button
                     onClick={() => setShowResetConfirm(false)}
-                    className="flex-1 py-2 bg-[#171B24] text-slate-300 rounded text-xs font-racing font-bold uppercase tracking-wider"
+                    className="h-10 flex-1 flex items-center justify-center bg-[#171B24] hover:bg-[#202633] text-slate-300 hover:text-white rounded text-xs font-racing font-bold uppercase tracking-wider cursor-pointer touch-manipulation active:scale-[0.98]"
                   >
                     Cancel
                   </button>
@@ -294,7 +294,7 @@ export const Screen15Settings: React.FC<Screen15SettingsProps> = ({
             ) : (
               <button
                 onClick={() => setShowResetConfirm(true)}
-                className="w-full py-2.5 bg-[#171B24] hover:bg-red-950/40 border border-red-500/30 text-red-400 rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors"
+                className="w-full h-10 flex items-center justify-center bg-[#171B24] hover:bg-red-950/40 border border-red-500/30 text-red-400 rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors cursor-pointer touch-manipulation active:scale-[0.98]"
               >
                 Reset Career Progress
               </button>
@@ -307,9 +307,9 @@ export const Screen15Settings: React.FC<Screen15SettingsProps> = ({
       <div className="flex items-center justify-end gap-3 max-w-5xl mx-auto pt-4 border-t border-white/10">
         <button
           onClick={handleSave}
-          className={`flex items-center gap-2 px-6 py-2.5 rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-lg ${
+          className={`h-10 flex items-center justify-center gap-2 px-6 rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-lg cursor-pointer touch-manipulation active:scale-[0.98] ${
             savedFeedback
-              ? 'bg-[#35D58A] text-black shadow-emerald-500/30'
+              ? 'bg-[#35D58A] text-black shadow-emerald-500/30 font-black'
               : 'bg-[#FF3434] hover:bg-[#e02626] text-white shadow-red-600/30'
           }`}
         >

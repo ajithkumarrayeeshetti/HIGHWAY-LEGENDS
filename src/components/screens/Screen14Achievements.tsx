@@ -85,9 +85,9 @@ export const Screen14Achievements: React.FC<Screen14AchievementsProps> = ({
                   sound.playClick();
                   setFilterTier(t);
                 }}
-                className={`px-3 py-1.5 font-racing font-bold uppercase tracking-wider rounded transition-all ${
+                className={`h-9 px-3.5 flex items-center justify-center font-racing font-bold uppercase tracking-wider rounded transition-all cursor-pointer touch-manipulation active:scale-[0.98] ${
                   isSelected
-                    ? 'bg-[#FF3434] text-white shadow-md shadow-red-600/30'
+                    ? 'bg-[#FF3434] text-white shadow-md shadow-red-600/30 font-black'
                     : 'text-slate-400 hover:text-white'
                 }`}
               >

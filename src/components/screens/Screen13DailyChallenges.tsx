@@ -125,20 +125,22 @@ export const Screen13DailyChallenges: React.FC<Screen13DailyChallengesProps> = (
                         sound.playSelect();
                         onClaimReward(c.id);
                       }}
-                      className="flex items-center gap-1.5 px-4 py-2 bg-[#35D58A] hover:bg-[#2eb976] text-black font-racing font-black text-xs uppercase tracking-wider rounded transition-all shadow-lg shadow-emerald-500/20"
+                      className="h-9 flex items-center justify-center gap-1.5 px-4 bg-[#35D58A] hover:bg-[#2eb976] text-black font-racing font-black text-xs uppercase tracking-wider rounded transition-all shadow-lg shadow-emerald-500/20 cursor-pointer touch-manipulation active:scale-[0.98]"
                     >
                       <Gift className="w-3.5 h-3.5" />
                       <span>Claim Reward</span>
                     </button>
                   ) : c.claimed ? (
-                    <span className="text-xs text-slate-500 font-semibold uppercase">Completed</span>
+                    <div className="h-9 flex items-center justify-center px-3 text-xs text-slate-500 font-semibold uppercase">
+                      <span>Completed</span>
+                    </div>
                   ) : (
                     <button
                       onClick={() => {
                         sound.playClick();
                         onNavigate('race-select');
                       }}
-                      className="flex items-center gap-1 px-3 py-1.5 bg-[#171B24] hover:bg-[#202633] text-slate-300 hover:text-white rounded text-xs font-racing font-bold uppercase transition-colors"
+                      className="h-9 flex items-center justify-center gap-1 px-3.5 bg-[#171B24] hover:bg-[#202633] text-slate-300 hover:text-white rounded border border-white/10 text-xs font-racing font-bold uppercase transition-all cursor-pointer touch-manipulation active:scale-[0.98]"
                     >
                       <span>Go Race</span>
                       <ChevronRight className="w-3.5 h-3.5" />

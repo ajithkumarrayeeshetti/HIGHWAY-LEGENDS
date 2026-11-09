@@ -136,7 +136,7 @@ export const Screen04WorldMap: React.FC<Screen04WorldMapProps> = ({
         </div>
 
         {/* Floating Location Inspector Panel (Bottom Right) */}
-        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-80 sm:w-96 racing-panel p-5 rounded border border-white/15 z-30 shadow-2xl">
+        <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100%-2rem)] sm:w-96 max-w-sm left-4 sm:left-auto racing-panel p-5 rounded border border-white/15 z-30 shadow-2xl">
           <div className="flex items-center justify-between text-xs text-[#A1A8B5] mb-1">
             <span className="text-[#FF8A32] font-racing font-bold uppercase tracking-wider">
               {selectedLoc.environmentType}
@@ -177,7 +177,7 @@ export const Screen04WorldMap: React.FC<Screen04WorldMapProps> = ({
                   sound.playSelect();
                   onSelectLocationRace(selectedLoc);
                 }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors shadow-lg shadow-red-600/30"
+                className="w-full h-10 flex items-center justify-center gap-2 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-600/30 cursor-pointer touch-manipulation active:scale-[0.98]"
               >
                 <Play className="w-3.5 h-3.5 fill-white" />
                 <span>Launch Regional Event</span>
@@ -185,7 +185,7 @@ export const Screen04WorldMap: React.FC<Screen04WorldMapProps> = ({
             ) : (
               <button
                 disabled
-                className="w-full py-2.5 bg-[#171B24] text-slate-500 rounded text-xs font-racing font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-not-allowed"
+                className="w-full h-10 bg-[#171B24] text-slate-500 rounded text-xs font-racing font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-not-allowed border border-white/5"
               >
                 <Lock className="w-3.5 h-3.5" />
                 <span>Region Locked · Unlock in Career</span>

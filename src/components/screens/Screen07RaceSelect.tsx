@@ -78,7 +78,7 @@ export const Screen07RaceSelect: React.FC<Screen07RaceSelectProps> = ({
               sound.playClick();
               onNavigate('garage');
             }}
-            className="px-4 py-2 bg-[#171B24] hover:bg-[#202633] border border-white/10 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors"
+            className="h-10 px-4 flex items-center justify-center bg-[#171B24] hover:bg-[#202633] border border-white/10 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation active:scale-[0.98]"
           >
             Switch Vehicle
           </button>
@@ -172,7 +172,7 @@ export const Screen07RaceSelect: React.FC<Screen07RaceSelectProps> = ({
                       sound.playSelect();
                       onSelectEvent(ev);
                     }}
-                    className="flex items-center gap-1.5 px-4 py-2 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-md shadow-red-600/30 group-hover:scale-105"
+                    className="h-9 flex items-center justify-center gap-1.5 px-4 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-md shadow-red-600/30 cursor-pointer touch-manipulation active:scale-[0.98]"
                   >
                     <Play className="w-3.5 h-3.5 fill-white" />
                     <span>Start Race</span>

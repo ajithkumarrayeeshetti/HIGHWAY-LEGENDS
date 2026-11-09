@@ -60,7 +60,7 @@ export const Screen10RaceResults: React.FC<Screen10RaceResultsProps> = ({
   const timeFormatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
   return (
-    <div className="relative w-full min-h-[calc(100vh-65px)] bg-[#08090D] flex items-center justify-center p-4 sm:p-8 select-none overflow-hidden">
+    <div className="relative w-full min-h-[calc(100vh-65px)] bg-[#08090D] flex items-center justify-center p-3 sm:p-8 select-none overflow-y-auto">
       {/* Background Graphic */}
       <img
         src="/src/assets/images/hero_red_hypercar_1794231144350.jpg"
@@ -71,7 +71,7 @@ export const Screen10RaceResults: React.FC<Screen10RaceResultsProps> = ({
       <div className="absolute inset-0 bg-gradient-to-t from-[#08090D] via-[#08090D]/80 to-transparent" />
 
       {/* Main Results Container */}
-      <div className="relative z-10 w-full max-w-2xl racing-panel-glow p-6 sm:p-10 rounded-2xl border border-white/20 shadow-2xl space-y-6 animate-fadeIn">
+      <div className="relative z-10 w-full max-w-2xl max-h-[92vh] overflow-y-auto racing-panel-glow p-5 sm:p-10 rounded-2xl border border-white/20 shadow-2xl space-y-4 sm:space-y-6 animate-fadeIn">
         {/* Banner Title */}
         <div className="text-center">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-black/60 border border-white/10 text-xs font-racing font-bold tracking-widest uppercase mb-2">
@@ -215,7 +215,7 @@ export const Screen10RaceResults: React.FC<Screen10RaceResultsProps> = ({
         </div>
 
         {/* Navigation Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 pt-2">
           {isVictory && !finalState.isWrecked ? (
             <>
               <button
@@ -223,7 +223,7 @@ export const Screen10RaceResults: React.FC<Screen10RaceResultsProps> = ({
                   sound.playClick();
                   onRaceAgain();
                 }}
-                className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#171B24] hover:bg-[#202633] text-white border border-white/15 rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                className="h-12 flex-1 flex items-center justify-center gap-2 px-4 bg-[#171B24] hover:bg-[#202633] text-white border border-white/15 rounded text-xs sm:text-sm font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation active:scale-[0.99]"
               >
                 <RotateCcw className="w-4 h-4 text-[#FF8A32]" />
                 <span>Race Again</span>
@@ -234,7 +234,7 @@ export const Screen10RaceResults: React.FC<Screen10RaceResultsProps> = ({
                   sound.playSelect();
                   onNextMission();
                 }}
-                className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-600/30 cursor-pointer"
+                className="h-12 flex-1 flex items-center justify-center gap-2 px-4 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs sm:text-sm font-racing font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-600/30 cursor-pointer touch-manipulation active:scale-[0.99]"
               >
                 <span>Next Mission</span>
                 <ChevronRight className="w-4 h-4" />
@@ -247,7 +247,7 @@ export const Screen10RaceResults: React.FC<Screen10RaceResultsProps> = ({
                   sound.playClick();
                   onRaceAgain();
                 }}
-                className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-600/30 cursor-pointer"
+                className="h-12 flex-1 flex items-center justify-center gap-2 px-4 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs sm:text-sm font-racing font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-600/30 cursor-pointer touch-manipulation active:scale-[0.99]"
               >
                 <RotateCcw className="w-4 h-4 text-white" />
                 <span>Retry Challenge</span>
@@ -258,7 +258,7 @@ export const Screen10RaceResults: React.FC<Screen10RaceResultsProps> = ({
                   sound.playSelect();
                   onNextMission();
                 }}
-                className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#171B24] hover:bg-[#202633] text-white border border-white/15 rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                className="h-12 flex-1 flex items-center justify-center gap-2 px-4 bg-[#171B24] hover:bg-[#202633] text-white border border-white/15 rounded text-xs sm:text-sm font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation active:scale-[0.99]"
               >
                 <Lock className="w-4 h-4 text-slate-400" />
                 <span>Career Hub</span>
@@ -271,7 +271,7 @@ export const Screen10RaceResults: React.FC<Screen10RaceResultsProps> = ({
               sound.playClick();
               onReturnToGarage();
             }}
-            className="flex items-center justify-center gap-2 px-5 py-3 bg-[#11141B] hover:bg-[#1a1f2b] text-slate-300 hover:text-white border border-white/10 rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors cursor-pointer"
+            className="h-12 flex items-center justify-center gap-2 px-6 bg-[#11141B] hover:bg-[#1a1f2b] text-slate-300 hover:text-white border border-white/10 rounded text-xs sm:text-sm font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation active:scale-[0.99]"
           >
             <Home className="w-4 h-4" />
             <span>Garage</span>

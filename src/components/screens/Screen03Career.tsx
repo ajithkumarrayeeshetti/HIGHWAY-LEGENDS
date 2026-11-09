@@ -45,7 +45,7 @@ export const Screen03Career: React.FC<Screen03CareerProps> = ({
               sound.playClick();
               onNavigate('world-map');
             }}
-            className="flex items-center gap-2 px-4 py-2 bg-[#171B24] hover:bg-[#202633] border border-white/10 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors"
+            className="h-10 flex items-center justify-center gap-2 px-4 bg-[#171B24] hover:bg-[#202633] border border-white/10 text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all cursor-pointer touch-manipulation active:scale-[0.98]"
           >
             <MapPin className="w-4 h-4 text-[#27B9FF]" />
             <span>View World Map</span>
@@ -162,13 +162,13 @@ export const Screen03Career: React.FC<Screen03CareerProps> = ({
                         sound.playSelect();
                         onStartChapter(ch);
                       }}
-                      className="flex items-center gap-1.5 px-4 py-2 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-colors shadow-md shadow-red-600/30"
+                      className="h-9 flex items-center justify-center gap-1.5 px-4 bg-[#FF3434] hover:bg-[#e02626] text-white rounded text-xs font-racing font-bold uppercase tracking-wider transition-all shadow-md shadow-red-600/30 cursor-pointer touch-manipulation active:scale-[0.98]"
                     >
                       <Play className="w-3.5 h-3.5 fill-white" />
                       <span>{ch.isCompleted ? 'Replay' : 'Play Mission'}</span>
                     </button>
                   ) : (
-                    <div className="flex items-center gap-1 text-xs text-slate-500 font-semibold uppercase">
+                    <div className="h-9 flex items-center gap-1.5 px-3 rounded bg-white/5 text-xs text-slate-500 font-semibold uppercase">
                       <Lock className="w-3.5 h-3.5" />
                       <span>Locked</span>
                     </div>
