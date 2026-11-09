@@ -69,6 +69,54 @@ export const Screen08RacingHUD: React.FC<Screen08RacingHUDProps> = ({
   const [touchBrake, setTouchBrake] = useState<boolean>(false);
   const [touchNitro, setTouchNitro] = useState<boolean>(false);
 
+  const handleSteerPointerDown = (dir: number, e: React.PointerEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {}
+    setTouchSteer(dir);
+  };
+
+  const handleSteerPointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {}
+    setTouchSteer(0);
+  };
+
+  const handleBrakePointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {}
+    setTouchBrake(true);
+  };
+
+  const handleBrakePointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {}
+    setTouchBrake(false);
+  };
+
+  const handleNitroPointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {}
+    setTouchNitro(true);
+  };
+
+  const handleNitroPointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {}
+    setTouchNitro(false);
+  };
+
   const cycleCamera = () => {
     sound.playClick();
     setCameraMode((prev) => {
@@ -341,8 +389,8 @@ export const Screen08RacingHUD: React.FC<Screen08RacingHUDProps> = ({
         </div>
       </div>
 
-      {/* BOTTOM HUD CONTROLS & GAUGES */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 p-4 sm:p-6 flex flex-col sm:flex-row items-end justify-between gap-4 pointer-events-none">
+      {/* DESKTOP BOTTOM HUD CONTROLS & GAUGES (Hidden on Mobile) */}
+      <div className="hidden md:flex absolute bottom-0 left-0 right-0 z-20 p-4 sm:p-6 items-end justify-between gap-4 pointer-events-none">
         {/* Bottom-Left: Desktop Keyboard Controls Guide */}
         <div className="pointer-events-auto flex items-end gap-3">
           <div className="hidden lg:flex flex-col gap-1.5 text-[10px] text-slate-300 bg-black/75 backdrop-blur-md p-3 rounded-xl border border-white/15 shadow-xl">
@@ -355,9 +403,8 @@ export const Screen08RacingHUD: React.FC<Screen08RacingHUDProps> = ({
           </div>
         </div>
 
-        {/* Bottom-Right: Nitro Canister & Mobile Controls */}
+        {/* Bottom-Right: Nitro Canister Card (Desktop) */}
         <div className="pointer-events-auto flex items-end gap-4">
-          {/* Nitro Gauge Bar */}
           <div className="racing-panel p-3.5 rounded-xl border border-white/15 shadow-2xl flex flex-col items-center gap-1.5">
             <div className="flex items-center gap-1.5 text-xs font-racing font-bold uppercase text-[#27B9FF]">
               <Flame className="w-4 h-4 text-[#27B9FF]" />
@@ -392,37 +439,143 @@ export const Screen08RacingHUD: React.FC<Screen08RacingHUDProps> = ({
               {liveState.isNitroActive ? 'BOOSTING!' : 'HOLD FOR NITRO (SHIFT)'}
             </button>
           </div>
+        </div>
+      </div>
 
-          {/* Mobile Steering & Camera Buttons */}
-          <div className="flex md:hidden items-center gap-2">
-            <button
-              onPointerDown={() => setTouchSteer(-1)}
-              onPointerUp={() => setTouchSteer(0)}
-              onPointerLeave={() => setTouchSteer(0)}
-              className="w-13 h-13 rounded-full bg-black/75 backdrop-blur-md border border-white/20 active:bg-[#FF3434] text-white flex items-center justify-center shadow-xl text-lg font-bold"
-            >
-              <ChevronLeft className="w-7 h-7" />
-            </button>
+      {/* MOBILE GAME CONTROLS: FIXED CORNER BUTTONS (Responsive & Safe-Area Aware) */}
 
-            <button
-              onPointerDown={() => setTouchSteer(1)}
-              onPointerUp={() => setTouchSteer(0)}
-              onPointerLeave={() => setTouchSteer(0)}
-              className="w-13 h-13 rounded-full bg-black/75 backdrop-blur-md border border-white/20 active:bg-[#FF3434] text-white flex items-center justify-center shadow-xl text-lg font-bold"
-            >
-              <ChevronRight className="w-7 h-7" />
-            </button>
+      {/* 1. LEFT BUTTON FIXED AT BOTTOM-LEFT CORNER */}
+      <div
+        className="fixed z-40 md:hidden pointer-events-auto select-none touch-none"
+        style={{
+          left: 'max(16px, env(safe-area-inset-left, 16px))',
+          bottom: 'max(16px, env(safe-area-inset-bottom, 16px))'
+        }}
+      >
+        <button
+          type="button"
+          aria-label="Steer Left"
+          onPointerDown={(e) => handleSteerPointerDown(-1, e)}
+          onPointerUp={handleSteerPointerUp}
+          onPointerLeave={handleSteerPointerUp}
+          onPointerCancel={handleSteerPointerUp}
+          className={`w-16 h-16 sm:w-18 sm:h-18 rounded-2xl border-2 flex flex-col items-center justify-center shadow-2xl transition-all active:scale-95 touch-none cursor-pointer ${
+            touchSteer === -1
+              ? 'border-[#FF3434] bg-[#FF3434]/40 shadow-[0_0_25px_rgba(255,52,52,0.7)] scale-95 ring-2 ring-[#FF3434]'
+              : 'border-white/30 bg-black/85 backdrop-blur-md hover:border-white/60 text-white shadow-black/80'
+          }`}
+          title="Steer Left"
+        >
+          <ChevronLeft className="w-8 h-8 text-white drop-shadow-md" />
+          <span className="text-[10px] font-racing font-black text-white/90 tracking-widest -mt-1">LEFT</span>
+        </button>
+      </div>
 
-            <button
-              onPointerDown={() => setTouchBrake(true)}
-              onPointerUp={() => setTouchBrake(false)}
-              onPointerLeave={() => setTouchBrake(false)}
-              className="w-13 h-13 rounded-full bg-[#171B24]/90 border border-white/20 active:bg-red-700 text-white flex items-center justify-center shadow-xl"
-              title="Emergency Brake"
-            >
-              <ArrowDown className="w-6 h-6 text-[#FF3434]" />
-            </button>
+      {/* 2. EMERGENCY BRAKE BUTTON (Stacked above Left button on bottom-left) */}
+      <div
+        className="fixed z-40 md:hidden pointer-events-auto select-none touch-none"
+        style={{
+          left: 'max(16px, env(safe-area-inset-left, 16px))',
+          bottom: 'calc(max(16px, env(safe-area-inset-bottom, 16px)) + 74px)'
+        }}
+      >
+        <button
+          type="button"
+          aria-label="Emergency Brake"
+          onPointerDown={handleBrakePointerDown}
+          onPointerUp={handleBrakePointerUp}
+          onPointerLeave={handleBrakePointerUp}
+          onPointerCancel={handleBrakePointerUp}
+          className={`w-12 h-12 rounded-xl border flex flex-col items-center justify-center shadow-xl transition-all touch-none cursor-pointer ${
+            touchBrake
+              ? 'bg-red-600 border-red-400 text-white shadow-[0_0_15px_rgba(239,68,68,0.7)] scale-95'
+              : 'bg-[#171B24]/90 backdrop-blur-md border-white/20 text-slate-300 hover:text-white'
+          }`}
+          title="Emergency Brake"
+        >
+          <ArrowDown className={`w-5 h-5 ${touchBrake ? 'text-white' : 'text-[#FF3434]'}`} />
+          <span className="text-[8px] font-racing font-bold uppercase">Brake</span>
+        </button>
+      </div>
+
+      {/* 3. RIGHT BUTTON FIXED AT BOTTOM-RIGHT CORNER */}
+      <div
+        className="fixed z-40 md:hidden pointer-events-auto select-none touch-none"
+        style={{
+          right: 'max(16px, env(safe-area-inset-right, 16px))',
+          bottom: 'max(16px, env(safe-area-inset-bottom, 16px))'
+        }}
+      >
+        <button
+          type="button"
+          aria-label="Steer Right"
+          onPointerDown={(e) => handleSteerPointerDown(1, e)}
+          onPointerUp={handleSteerPointerUp}
+          onPointerLeave={handleSteerPointerUp}
+          onPointerCancel={handleSteerPointerUp}
+          className={`w-16 h-16 sm:w-18 sm:h-18 rounded-2xl border-2 flex flex-col items-center justify-center shadow-2xl transition-all active:scale-95 touch-none cursor-pointer ${
+            touchSteer === 1
+              ? 'border-[#FF3434] bg-[#FF3434]/40 shadow-[0_0_25px_rgba(255,52,52,0.7)] scale-95 ring-2 ring-[#FF3434]'
+              : 'border-white/30 bg-black/85 backdrop-blur-md hover:border-white/60 text-white shadow-black/80'
+          }`}
+          title="Steer Right"
+        >
+          <ChevronRight className="w-8 h-8 text-white drop-shadow-md" />
+          <span className="text-[10px] font-racing font-black text-white/90 tracking-widest -mt-1">RIGHT</span>
+        </button>
+      </div>
+
+      {/* 4. NITRO BOOST BUTTON (Stacked above Right button on bottom-right) */}
+      <div
+        className="fixed z-40 md:hidden pointer-events-auto select-none touch-none"
+        style={{
+          right: 'max(16px, env(safe-area-inset-right, 16px))',
+          bottom: 'calc(max(16px, env(safe-area-inset-bottom, 16px)) + 74px)'
+        }}
+      >
+        <button
+          type="button"
+          aria-label="Nitro Boost"
+          onPointerDown={handleNitroPointerDown}
+          onPointerUp={handleNitroPointerUp}
+          onPointerLeave={handleNitroPointerUp}
+          onPointerCancel={handleNitroPointerUp}
+          className={`w-12 h-12 rounded-xl border flex flex-col items-center justify-center shadow-xl transition-all touch-none cursor-pointer ${
+            liveState.isNitroActive
+              ? 'bg-[#27B9FF] border-cyan-300 text-black shadow-[0_0_15px_rgba(39,185,255,0.7)] scale-95'
+              : 'bg-[#171B24]/90 backdrop-blur-md border-white/20 text-[#27B9FF] hover:border-cyan-400'
+          }`}
+          title="Nitro Boost"
+        >
+          <Flame className="w-5 h-5 text-[#27B9FF]" />
+          <span className="text-[8px] font-racing font-black uppercase text-white">
+            {Math.round(liveState.nitroRemaining)}%
+          </span>
+        </button>
+      </div>
+
+      {/* 5. MOBILE BOTTOM-CENTER NITRO RESERVE PILL (Clear of both corner buttons) */}
+      <div
+        className="fixed z-30 md:hidden pointer-events-none left-1/2 -translate-x-1/2 select-none"
+        style={{
+          bottom: 'max(16px, env(safe-area-inset-bottom, 16px))'
+        }}
+      >
+        <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/15 shadow-2xl">
+          <Flame className={`w-3.5 h-3.5 ${liveState.isNitroActive ? 'text-[#FF3434] animate-pulse' : 'text-[#27B9FF]'}`} />
+          <div className="w-24 sm:w-32 h-2 bg-white/10 rounded-full overflow-hidden p-0.5">
+            <div
+              className={`h-full rounded-full transition-all duration-100 ${
+                liveState.isNitroActive
+                  ? 'bg-gradient-to-r from-[#27B9FF] via-white to-[#FF3434] animate-pulse'
+                  : 'bg-[#27B9FF]'
+              }`}
+              style={{ width: `${liveState.nitroRemaining}%` }}
+            />
           </div>
+          <span className="text-[10px] font-racing font-bold text-white font-mono-nums">
+            {Math.round(liveState.nitroRemaining)}%
+          </span>
         </div>
       </div>
     </div>
